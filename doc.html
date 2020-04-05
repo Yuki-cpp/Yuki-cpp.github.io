@@ -1,0 +1,590 @@
+<!DOCTYPE HTML><html><head><title>Robot API</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 7.5.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 15px;
+    line-height: 1.5em;
+    color: #24292e;
+  }
+
+  p {
+    margin: 1em 0;
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 1em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+
+  h4, h5 {
+    font-weight: normal;
+    margin: 1em 0;
+  }
+
+  h4 {
+    font-size: 1.4em;
+  }
+
+  h5 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 2em;
+  }
+
+  ul.toc ul {
+    padding-top: 0.5em;
+  }
+
+  ul li {
+    margin-bottom: 0.5em;
+  }
+
+  ul li p {
+    margin: 0 0 1em 0;
+  }
+
+  a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  h5 a,
+  h5 a:focus,
+  h5 a:hover {
+    text-decoration: none;
+    border-bottom: 1px dashed #428bca;
+  }
+
+  table {
+    margin-bottom: 20px;
+  }
+
+  table th,
+  table td {
+    padding: 8px;
+    line-height: 20px;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+
+  table th {
+    font-weight: bold;
+  }
+
+  table thead th {
+    vertical-align: bottom;
+  }
+
+  table thead:first-child tr:first-child th {
+    border-top: 0;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  .resource-body {
+    padding: 0.5em 2em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: none;
+  }
+
+  pre {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: 1em;
+    margin: 1em 0;
+    overflow: auto;
+  }
+
+  pre code {
+    padding: 0;
+  }
+
+  code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    padding: 0.2em;
+    background-color: #f8f8f8;
+  }
+
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: justify;
+    margin-bottom: 50px;
+    padding: 0 20px;
+  }
+
+
+  @media (min-width:768px) {
+    .container {
+      width: 750px;
+    }
+  }
+
+  @media (min-width:992px) {
+    .container {
+      width: 950px;
+    }
+  }
+
+  @media (min-width:1200px) {
+    .container {
+      width: 1000px;
+    }
+  </style></head><body><div class="container"><h1>Robot API</h1><p>http://127.0.0.1:8000/api</p><ul></ul><h2>Table of contents</h2><ul class="toc"><li><a href="#robot">/robot</a><ul><li><a href="#robot_get">GET /robot</a></li><li><a href="#robot_post">POST /robot</a></li><li><a href="#robot__robotid__get">GET /robot/{robotId}</a></li><li><a href="#robot__robotid__put">PUT /robot/{robotId}</a></li><li><a href="#robot__robotid__delete">DELETE /robot/{robotId}</a></li><li><a href="#robot__robotid__joint_get">GET /robot/{robotId}/joint</a></li><li><a href="#robot__robotid__joint__jointid__get">GET /robot/{robotId}/joint/{jointId}</a></li><li><a href="#robot__robotid__joint__jointid__put">PUT /robot/{robotId}/joint/{jointId}</a></li><li><a href="#robot__robotid__link_get">GET /robot/{robotId}/link</a></li><li><a href="#robot__robotid__link_post">POST /robot/{robotId}/link</a></li><li><a href="#robot__robotid__link__linkid__get">GET /robot/{robotId}/link/{linkId}</a></li><li><a href="#robot__robotid__link__linkid__put">PUT /robot/{robotId}/link/{linkId}</a></li><li><a href="#robot__robotid__link__linkid__delete">DELETE /robot/{robotId}/link/{linkId}</a></li><li><a href="#robot__robotid__link__linkid__geometry_get">GET /robot/{robotId}/link/{linkId}/geometry</a></li><li><a href="#robot__robotid__link__linkid__geometry_post">POST /robot/{robotId}/link/{linkId}/geometry</a></li><li><a href="#robot__robotid__link__linkid__geometry__geometryid__get">GET /robot/{robotId}/link/{linkId}/geometry/{geometryId}</a></li><li><a href="#robot__robotid__link__linkid__geometry__geometryid__put">PUT /robot/{robotId}/link/{linkId}/geometry/{geometryId}</a></li><li><a href="#robot__robotid__link__linkid__geometry__geometryid__delete">DELETE /robot/{robotId}/link/{linkId}/geometry/{geometryId}</a></li></ul></li></ul><h2 id="robot" class="panel-title">/robot</h2><div class="resource"><div id="robot_get"><h3>GET /robot</h3><div class="description"><p>Retrieves the list of all existing robots</p></div><pre><code>GET /robot</code></pre><div><div id="robot_get_response"><h4>Response 200</h4><p>Returns the list of robots</p><h5><a href="#" onclick="$('#robot_get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot_get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: array of Robot</p><p><strong>Items</strong>: Robot</p><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>links</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div></li><li><strong>joints</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div></li></ul></div></div></div></div></div><div id="robot_post"><h3>POST /robot</h3><div class="description"><p>Creates a new robot.</p></div><pre><code>POST /robot</code></pre><div><div id="robot_post_request"><h5><a href="#" onclick="$('#robot_post_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot_post_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>name</strong>: <em>(string)</em></li></ul></div></div></div><div id="robot_post_response"><h4>Response 201</h4><p>Creates a new robot with the given properties</p><h5><a href="#" onclick="$('#robot_post_response_201_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot_post_response_201_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>links</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div></li><li><strong>joints</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>example_1</strong>:<br></p><pre><code>{
+  "id": "robot_1",
+  "name": "Wall-E",
+  "links": [],
+  "joints": []
+}</code></pre><p><strong>example_2</strong>:<br></p><pre><code>{
+  "id": "robot_2",
+  "name": "R2D2",
+  "links": [],
+  "joints": []
+}</code></pre></div></div><h4>Response 400</h4><p>Invalid request</p></div></div></div></div><div class="resource"><div id="robot__robotid__get"><h3>GET /robot/{robotId}</h3><div class="description"><p>Retrieves the properties of a robot</p></div><pre><code>GET /robot/{robotId}</code></pre><div><div id="robot__robotid__get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li></ul></div><div id="robot__robotid__get_response"><h4>Response 200</h4><p>Returns the description of the robot</p><h5><a href="#" onclick="$('#robot__robotid__get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>links</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div></li><li><strong>joints</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>example_1</strong>:<br></p><pre><code>{
+  "id": "robot_1",
+  "name": "Wall-E",
+  "links": [],
+  "joints": []
+}</code></pre><p><strong>example_2</strong>:<br></p><pre><code>{
+  "id": "robot_2",
+  "name": "R2D2",
+  "links": [],
+  "joints": []
+}</code></pre></div></div></div></div></div><div id="robot__robotid__put"><h3>PUT /robot/{robotId}</h3><div class="description"><p>Sets the properperties of a robot</p></div><pre><code>PUT /robot/{robotId}</code></pre><div><div id="robot__robotid__put_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li></ul><h5><a href="#" onclick="$('#robot__robotid__put_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__put_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>name</strong>: <em>(string)</em></li></ul></div></div></div><div id="robot__robotid__put_response"><h4>Response 202</h4><p>Returns the new description of the robot</p><h5><a href="#" onclick="$('#robot__robotid__put_response_202_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__put_response_202_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>links</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div></li><li><strong>joints</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>example_1</strong>:<br></p><pre><code>{
+  "id": "robot_1",
+  "name": "Wall-E",
+  "links": [],
+  "joints": []
+}</code></pre><p><strong>example_2</strong>:<br></p><pre><code>{
+  "id": "robot_2",
+  "name": "R2D2",
+  "links": [],
+  "joints": []
+}</code></pre></div></div><h4>Response 400</h4><p>Invalid request</p></div></div></div><div id="robot__robotid__delete"><h3>DELETE /robot/{robotId}</h3><div class="description"><p>Deletes a robot</p></div><pre><code>DELETE /robot/{robotId}</code></pre><div><div id="robot__robotid__delete_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li></ul></div><div id="robot__robotid__delete_response"><h4>Response 204</h4></div></div></div></div><div class="resource"><div id="robot__robotid__joint_get"><h3>GET /robot/{robotId}/joint</h3><div class="description"><p>Lists all joints of a robot</p></div><pre><code>GET /robot/{robotId}/joint</code></pre><div><div id="robot__robotid__joint_get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li></ul></div><div id="robot__robotid__joint_get_response"><h4>Response 200</h4><p>Returns the list of joints of the robot</p><h5><a href="#" onclick="$('#robot__robotid__joint_get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__joint_get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: array of Joint</p><p><strong>Items</strong>: Joint</p><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div></div></div></div></div></div><div class="resource"><div id="robot__robotid__joint__jointid__get"><h3>GET /robot/{robotId}/joint/{jointId}</h3><div class="description"><p>Retrieves the properties of a joint</p></div><pre><code>GET /robot/{robotId}/joint/{jointId}</code></pre><div><div id="robot__robotid__joint__jointid__get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>jointId</strong>: <em>required (string)</em></li></ul></div><div id="robot__robotid__joint__jointid__get_response"><h4>Response 200</h4><p>Returns the description of the joint</p><h5><a href="#" onclick="$('#robot__robotid__joint__jointid__get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__joint__jointid__get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div></div></div></div><div id="robot__robotid__joint__jointid__put"><h3>PUT /robot/{robotId}/joint/{jointId}</h3><div class="description"><p>Sets the properperties of a joint</p></div><pre><code>PUT /robot/{robotId}/joint/{jointId}</code></pre><div><div id="robot__robotid__joint__jointid__put_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>jointId</strong>: <em>required (string)</em></li></ul><h5><a href="#" onclick="$('#robot__robotid__joint__jointid__put_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__joint__jointid__put_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>name</strong>: <em>(string)</em></li><li><strong>anchor</strong>: <em>(array of )</em></li><li><strong>axis</strong>: <em>(array of )</em></li></ul></div></div></div><div id="robot__robotid__joint__jointid__put_response"><h4>Response 202</h4><p>Returns the new description of the joint</p><h5><a href="#" onclick="$('#robot__robotid__joint__jointid__put_response_202_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__joint__jointid__put_response_202_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>parentLinkId</strong>: <em>required (string)</em></li><li><strong>childLinkId</strong>: <em>required (string)</em></li><li><strong>anchor</strong>: <em>required (array of )</em></li><li><strong>axis</strong>: <em>required (array of )</em></li></ul></div><h4>Response 400</h4><p>Invalid request</p></div></div></div></div><div class="resource"><div id="robot__robotid__link_get"><h3>GET /robot/{robotId}/link</h3><div class="description"><p>Lists all links of a robot</p></div><pre><code>GET /robot/{robotId}/link</code></pre><div><div id="robot__robotid__link_get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li></ul></div><div id="robot__robotid__link_get_response"><h4>Response 200</h4><p>Returns the list of links of the robot</p><h5><a href="#" onclick="$('#robot__robotid__link_get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link_get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: array of Link</p><p><strong>Items</strong>: Link</p><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div></div></div></div></div><div id="robot__robotid__link_post"><h3>POST /robot/{robotId}/link</h3><div class="description"><p>Creates a new link in the robot</p></div><pre><code>POST /robot/{robotId}/link</code></pre><div><div id="robot__robotid__link_post_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li></ul><h5><a href="#" onclick="$('#robot__robotid__link_post_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link_post_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>name</strong>: <em>(string)</em></li><li><strong>transform</strong>: <em>(array of )</em></li></ul></div></div></div><div id="robot__robotid__link_post_response"><h4>Response 201</h4><p>Returns the description of the created link</p><h5><a href="#" onclick="$('#robot__robotid__link_post_response_201_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link_post_response_201_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div><h4>Response 400</h4><p>Invalid request</p></div></div></div></div><div class="resource"><div id="robot__robotid__link__linkid__get"><h3>GET /robot/{robotId}/link/{linkId}</h3><div class="description"><p>Retrieves the properties of a link</p></div><pre><code>GET /robot/{robotId}/link/{linkId}</code></pre><div><div id="robot__robotid__link__linkid__get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li></ul></div><div id="robot__robotid__link__linkid__get_response"><h4>Response 200</h4><p>Returns the description of the link</p><h5><a href="#" onclick="$('#robot__robotid__link__linkid__get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div></div></div></div><div id="robot__robotid__link__linkid__put"><h3>PUT /robot/{robotId}/link/{linkId}</h3><div class="description"><p>Sets the properperties of a link</p></div><pre><code>PUT /robot/{robotId}/link/{linkId}</code></pre><div><div id="robot__robotid__link__linkid__put_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li></ul><h5><a href="#" onclick="$('#robot__robotid__link__linkid__put_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__put_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>name</strong>: <em>(string)</em></li><li><strong>transform</strong>: <em>(array of )</em></li></ul></div></div></div><div id="robot__robotid__link__linkid__put_response"><h4>Response 202</h4><p>Returns the new description of the robot</p><h5><a href="#" onclick="$('#robot__robotid__link__linkid__put_response_202_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__put_response_202_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>parent_link_id</strong>: <em>required (union)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>geometries</strong>: <em>required (array of items)</em><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></li></ul></div><h4>Response 400</h4><p>Invalid request</p></div></div></div><div id="robot__robotid__link__linkid__delete"><h3>DELETE /robot/{robotId}/link/{linkId}</h3><div class="description"><p>Deletes a link</p></div><pre><code>DELETE /robot/{robotId}/link/{linkId}</code></pre><div><div id="robot__robotid__link__linkid__delete_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li></ul></div><div id="robot__robotid__link__linkid__delete_response"><h4>Response 204</h4></div></div></div></div><div class="resource"><div id="robot__robotid__link__linkid__geometry_get"><h3>GET /robot/{robotId}/link/{linkId}/geometry</h3><div class="description"><p>Lists all geometries of a link</p></div><pre><code>GET /robot/{robotId}/link/{linkId}/geometry</code></pre><div><div id="robot__robotid__link__linkid__geometry_get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li></ul></div><div id="robot__robotid__link__linkid__geometry_get_response"><h4>Response 200</h4><p>Returns the list of geometries of the link</p><h5><a href="#" onclick="$('#robot__robotid__link__linkid__geometry_get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__geometry_get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: array of Geometry</p><p><strong>Items</strong>: Geometry</p><div class="items"><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul></div></div></div></div></div><div id="robot__robotid__link__linkid__geometry_post"><h3>POST /robot/{robotId}/link/{linkId}/geometry</h3><div class="description"><p>Creates a new geometry in the link</p></div><pre><code>POST /robot/{robotId}/link/{linkId}/geometry</code></pre><div><div id="robot__robotid__link__linkid__geometry_post_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li></ul><h5><a href="#" onclick="$('#robot__robotid__link__linkid__geometry_post_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__geometry_post_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>type</strong>: <em>(string - pattern: box)</em></li><li><strong>name</strong>: <em>(string)</em></li><li><strong>transform</strong>: <em>(array of )</em></li><li><strong>extends</strong>: <em>(array of )</em></li></ul></div></div></div><div id="robot__robotid__link__linkid__geometry_post_response"><h4>Response 201</h4><p>Returns the new description of the created geometry</p><h5><a href="#" onclick="$('#robot__robotid__link__linkid__geometry_post_response_201_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__geometry_post_response_201_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div><h4>Response 400</h4><p>Invalid request</p></div></div></div></div><div class="resource"><div id="robot__robotid__link__linkid__geometry__geometryid__get"><h3>GET /robot/{robotId}/link/{linkId}/geometry/{geometryId}</h3><div class="description"><p>Retrieves the properties of a geometry</p></div><pre><code>GET /robot/{robotId}/link/{linkId}/geometry/{geometryId}</code></pre><div><div id="robot__robotid__link__linkid__geometry__geometryid__get_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li><li><strong>geometryId</strong>: <em>required (string)</em></li></ul></div><div id="robot__robotid__link__linkid__geometry__geometryid__get_response"><h4>Response 200</h4><p>Returns the description of the geometry</p><h5><a href="#" onclick="$('#robot__robotid__link__linkid__geometry__geometryid__get_response_200_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__geometry__geometryid__get_response_200_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div></div></div></div><div id="robot__robotid__link__linkid__geometry__geometryid__put"><h3>PUT /robot/{robotId}/link/{linkId}/geometry/{geometryId}</h3><div class="description"><p>Sets the properperties of a geometry</p></div><pre><code>PUT /robot/{robotId}/link/{linkId}/geometry/{geometryId}</code></pre><div><div id="robot__robotid__link__linkid__geometry__geometryid__put_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li><li><strong>geometryId</strong>: <em>required (string)</em></li></ul><h5><a href="#" onclick="$('#robot__robotid__link__linkid__geometry__geometryid__put_request_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__geometry__geometryid__put_request_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><div><ul><li><strong>type</strong>: <em>(string - pattern: box)</em></li><li><strong>name</strong>: <em>(string)</em></li><li><strong>transform</strong>: <em>(array of )</em></li><li><strong>extends</strong>: <em>(array of )</em></li></ul></div></div></div><div id="robot__robotid__link__linkid__geometry__geometryid__put_response"><h4>Response 202</h4><p>Returns the new description of the geometry</p><h5><a href="#" onclick="$('#robot__robotid__link__linkid__geometry__geometryid__put_response_202_body').toggle(); return false">Body</a></h5><div class="resource-body" id="robot__robotid__link__linkid__geometry__geometryid__put_response_202_body"><p><strong>Media type</strong>: application/json</p><p><strong>Properties:</strong></p><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>type</strong>: <em>required (string - pattern: box)</em></li><li><strong>name</strong>: <em>required (string)</em></li><li><strong>transform</strong>: <em>required (array of )</em></li><li><strong>extends</strong>: <em>required (array of )</em></li></ul><p><strong>Examples</strong>:</p><div class="examples"><p><strong>robot_base</strong>:<br></p><pre><code>{
+  "id": "geometry_1",
+  "name": "robot_base",
+  "type": "box",
+  "transform": [
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "extends": [
+    10,
+    10,
+    10
+  ]
+}</code></pre><p><strong>gripper</strong>:<br></p><pre><code>{
+  "id": "geometry_7",
+  "name": "gripper",
+  "type": "box",
+  "transform": [
+    -0.6599396,
+    -0.2484294,
+    -0.6665634,
+    -0.2417762,
+    2.34,
+    0,
+    36
+  ],
+  "extends": [
+    5,
+    10,
+    2
+  ]
+}</code></pre></div></div><h4>Response 400</h4><p>Invalid request</p></div></div></div><div id="robot__robotid__link__linkid__geometry__geometryid__delete"><h3>DELETE /robot/{robotId}/link/{linkId}/geometry/{geometryId}</h3><div class="description"><p>Deletes a geometry</p></div><pre><code>DELETE /robot/{robotId}/link/{linkId}/geometry/{geometryId}</code></pre><div><div id="robot__robotid__link__linkid__geometry__geometryid__delete_request"><h5>URI Parameters</h5><ul><li><strong>robotId</strong>: <em>required (string)</em><p>The robot unique Id</p></li><li><strong>linkId</strong>: <em>required (string)</em></li><li><strong>geometryId</strong>: <em>required (string)</em></li></ul></div><div id="robot__robotid__link__linkid__geometry__geometryid__delete_response"><h4>Response 204</h4></div></div></div></div></div></body></html>
